@@ -13,14 +13,6 @@
 # 更改默认IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-# 修改固件md5值
-#!/bin/bash
-
-# 生成vermagic文件
-echo "317eb6a6d9828371f8f0ca9cfaff251a" > vermagic
-sed -i "s/grep '=[ym]' \$(LINUX_DIR)/.config.set \| LC_ALL=C sort \| \$(MKHASH) md5 > \$(LINUX_DIR)/.vermagic/cp \$(TOPDIR)/vermagic \$(LINUX_DIR)/.vermagic/g" include/kernel-defaults.mk
-sed -i "s/\(STAMP_BUILT:=\)\(.*\)\(_\$\(shell \)\$(SCRIPT_DIR)/kconfig.pl \$(LINUX_DIR)/.config \| \$(MKHASH) md5\)\)/\1\2_\$\(shell cat \$(LINUX_DIR)/.vermagic\)\3/g" package/kernel/linux/Makefile
-
 #添加软件包
 #rm -rf feeds/luci/applications/luci-app-openclash
 #git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
