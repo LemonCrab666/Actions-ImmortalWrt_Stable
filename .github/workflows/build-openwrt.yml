@@ -98,18 +98,6 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Set up build environment
-      run: |
-        echo "317eb6a6d9828371f8f0ca9cfaff251a" > vermagic
-
-    - name: Modify include/kernel-defaults.mk
-      run: |
-        sed -i 's#grep '=[ym]' $(LINUX_DIR)/.config.set | LC_ALL=C sort | $(MKHASH) md5 > $(LINUX_DIR)/.vermagic#cp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic#g' /workdir/openwrt/include/kernel-defaults.mk
-
-    - name: Modify package/kernel/linux/Makefile
-      run: |
-        sed -i 's#STAMP_BUILT:=$(STAMP_BUILT)_$(shell $(SCRIPT_DIR)/kconfig.pl $(LINUX_DIR)/.config | $(MKHASH) md5)#STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)#g' /workdir/openwrt/package/kernel/linux/Makefile
-
     - name: Compile the firmware
       id: compile
       run: |
