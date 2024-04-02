@@ -19,6 +19,7 @@
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 
 # 修改固件MD5值
+# 修改include/kernel-defaults.mk
 # 设置变量
 pattern="grep '=[ym]' \$(LINUX_DIR)/.config.set | LC_ALL=C sort | \$(MKHASH) md5 > \$(LINUX_DIR)/.vermagic"
 replacement="cp \$(TOPDIR)/vermagic \$(LINUX_DIR)/.vermagic"
