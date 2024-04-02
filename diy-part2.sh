@@ -27,3 +27,5 @@ replacement="cp \$(TOPDIR)/vermagic \$(LINUX_DIR)/.vermagic"
 escaped_pattern=$(printf '%s\n' "$pattern" | sed -e 's/[][\/$*.^|[]/\\&/g')
 # 使用sed命令替换整段语句
 sed -i "s|$escaped_pattern|$replacement|g" include/kernel-defaults.mk
+#修改package/kernel/linux/Makefile
+sed -i 's/STAMP_BUILT:=$(STAMP_BUILT)_$(shell $(SCRIPT_DIR)\/kconfig.pl $(LINUX_DIR)\/.config | $(MKHASH) md5)/STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)\/.vermagic)/g' package/kernel/linux/Makefile
