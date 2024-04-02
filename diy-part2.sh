@@ -17,3 +17,12 @@
 #rm -rf feeds/luci/applications/luci-app-openclash
 #git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+
+# 修改固件MD5值
+# 设置变量
+pattern="grep '=[ym]' \$(LINUX_DIR)/.config.set | LC_ALL=C sort | \$(MKHASH) md5 > \$(LINUX_DIR)/.vermagic"
+replacement="cp \$(TOPDIR)/vermagic \$(LINUX_DIR)/.vermagic"
+# 对pattern中的特殊字符进行转义处理
+escaped_pattern=$(printf '%s\n' "$pattern" | sed -e 's/[][\/$*.^|[]/\\&/g')
+# 使用sed命令替换整段语句
+sed -i "s|$escaped_pattern|$replacement|g" include/kernel-defaults.mk
