@@ -4,7 +4,7 @@
 
 ## 纯净版X86_64 ImmortalWrt_Stable
 已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、upnp、openvpn服务器、kms服务器
-![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/99cee283-65ba-4f47-9a2a-c7d1c02461c2)
+![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/5e4b9e05-9b60-4ddd-81ae-09fdda88f16d)
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/dc047309-3b60-4faa-a7ec-58f7cc72fe34)
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/308374e7-5b63-4fea-b8db-58481250e50b)
