@@ -20,7 +20,7 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app
 
 # 修改固件MD5值
 # 生成VerMagic文件
-echo "317eb6a6d9828371f8f0ca9cfaff251a" > vermagic
+echo "c5f84ade92103ce978361a1c59890df1" > vermagic
 # 检查VerMagic文件是否生成成功
 if [ ! -f "vermagic" ]; then
     echo "VerMagic文件生成失败！"
