@@ -18,6 +18,9 @@
 #git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 
+#将nlbwmon从服务目录移动到菜单栏
+sed -i 's/"services\///g' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
+
 # 修改固件MD5值
 # 生成VerMagic文件
 echo "c5f84ade92103ce978361a1c59890df1" > vermagic
