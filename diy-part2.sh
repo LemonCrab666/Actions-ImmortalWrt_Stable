@@ -31,10 +31,13 @@ echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 mkdir -p files/etc/openclash/core
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
 mv /tmp/clash files/etc/openclash/core/clash
+chmod 0755 files/etc/openclash/core/clash
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | gunzip -c > /tmp/clash_tun
 mv /tmp/clash_tun files/etc/openclash/core/clash_tun
+chmod 0755 files/etc/openclash/core/clash_tun
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
 mv /tmp/clash files/etc/openclash/core/clash_meta
+chmod 0755 files/etc/openclash/core/clash_meta
 
 # 修改固件MD5值
 # 生成VerMagic文件
