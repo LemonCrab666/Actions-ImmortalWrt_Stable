@@ -34,8 +34,8 @@ cat <<EOF > files/etc/sysupgrade.conf
 
 # /etc/example.conf
 # /etc/openvpn/
-#/etc/AdGuardHome.yaml
-#/usr/bin/AdGuardHome/
+/etc/AdGuardHome.yaml
+/usr/bin/AdGuardHome/
 /www/luci-static/argon/background/
 /usr/share/wechatpush/api/OpenWrt.jpg
 /root/backup_openwrt.sh
