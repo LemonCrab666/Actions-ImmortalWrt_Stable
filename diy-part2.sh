@@ -39,6 +39,17 @@ curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/c
 mv /tmp/clash files/etc/openclash/core/clash_meta
 chmod 0755 files/etc/openclash/core/clash_meta
 
+#将AdGuardHome核心文件编译进目录
+curl -s https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest \
+| grep "browser_download_url.*AdGuardHome_linux_amd64.tar.gz" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| xargs curl -L -o /tmp/AdGuardHome_linux_amd64.tar.gz && \
+tar -xzvf /tmp/AdGuardHome_linux_amd64.tar.gz -C /tmp/ --strip-components=1 && \
+mkdir -p files/usr/bin/AdGuardHome && \
+mv /tmp/AdGuardHome/AdGuardHome files/usr/bin/AdGuardHome/
+chmod 0755 files/usr/bin/AdGuardHome/AdGuardHome
+
 # 修改固件MD5值
 # 生成VerMagic文件
 echo "c5f84ade92103ce978361a1c59890df1" > vermagic
