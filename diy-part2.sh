@@ -27,6 +27,15 @@ mkdir -p files/etc
 echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
 echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 
+#将clash内核、TUN内核、Meta内核编译进目录
+mkdir -p files/etc/openclash/core
+curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
+mv /tmp/clash files/etc/openclash/core/clash
+curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | tar -xz -C /tmp
+mv /tmp/clash files/etc/openclash/core/clash_tun
+curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
+mv /tmp/clash files/etc/openclash/core/clash_meta
+
 # 修改固件MD5值
 # 生成VerMagic文件
 echo "c5f84ade92103ce978361a1c59890df1" > vermagic
