@@ -27,7 +27,6 @@ mkdir -p files/etc
 echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
 echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 
-
 # 修改固件MD5值
 # 生成VerMagic文件
 echo "c5f84ade92103ce978361a1c59890df1" > vermagic
