@@ -20,6 +20,7 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app
 
 #将nlbwmon从服务目录移动到菜单栏
 sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
+sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
 
 # 修改固件MD5值
 # 生成VerMagic文件
