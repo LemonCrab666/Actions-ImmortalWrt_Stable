@@ -27,6 +27,22 @@ mkdir -p files/etc
 echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
 echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 
+#修改sysguarde备份列表
+cat <<EOF > files/etc/sysupgrade.conf
+## This file contains files and directories that should
+## be preserved during an upgrade.
+
+# /etc/example.conf
+# /etc/openvpn/
+#/etc/AdGuardHome.yaml
+#/usr/bin/AdGuardHome/
+/www/luci-static/argon/background/
+/usr/share/wechatpush/api/OpenWrt.jpg
+/root/backup_openwrt.sh
+/root/sshpass
+/var/lib/nlbwmon
+EOF
+
 #将clash内核、TUN内核、Meta内核编译进目录
 mkdir -p files/etc/openclash/core
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
