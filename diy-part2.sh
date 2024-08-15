@@ -31,7 +31,7 @@ echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 mkdir -p files/etc/openclash/core
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
 mv /tmp/clash files/etc/openclash/core/clash
-curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | tar -xz -C /tmp
+curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | gunzip -c > /tmp/clash_tun
 mv /tmp/clash files/etc/openclash/core/clash_tun
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
 mv /tmp/clash files/etc/openclash/core/clash_meta
