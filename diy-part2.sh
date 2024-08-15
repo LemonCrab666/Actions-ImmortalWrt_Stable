@@ -24,7 +24,15 @@ sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luc
 
 #由于内核参数 net.core.rmem_max 的限制，缓冲区大小被限制为 212992 字节，永久设置 Netlink 接收缓冲区大小为 524288 字节。
 mkdir -p files/etc
-echo "net.core.rmem_max=524288" > files/etc/sysctl.conf
+cat <<EOF > files/etc/sysctl.conf
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+sysctl -w net.core.rmem_max=524288
+
+exit 0
+EOF
+
 
 # 修改固件MD5值
 # 生成VerMagic文件
