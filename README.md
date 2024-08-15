@@ -3,6 +3,8 @@
 使用[P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)的模板对ImmortalWrt_Stable源码进行编译
 
 ## 纯净版X86_64 ImmortalWrt_Stable
+默认ip地址：http://192.168.1.1 或 http://immortalwrt.lan
+用户名：root 密码：无
 已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、upnp、openvpn服务器、kms服务器、adguardhome、smartdns
 并支持直接从官方源下载插件
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
