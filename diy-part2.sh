@@ -22,6 +22,10 @@ git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app
 sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
 
+#
+mkdir -p files/etc
+echo "net.core.rmem_max=524288" > files/etc/sysctl.conf
+
 # 修改固件MD5值
 # 生成VerMagic文件
 echo "c5f84ade92103ce978361a1c59890df1" > vermagic
