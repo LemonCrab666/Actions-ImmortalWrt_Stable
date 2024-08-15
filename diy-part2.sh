@@ -43,6 +43,8 @@ cat <<EOF > files/etc/sysupgrade.conf
 /var/lib/nlbwmon
 EOF
 
+chmod 0644 files/etc/sysupgrade.conf
+
 #将clash内核、TUN内核、Meta内核编译进目录
 mkdir -p files/etc/openclash/core
 curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
