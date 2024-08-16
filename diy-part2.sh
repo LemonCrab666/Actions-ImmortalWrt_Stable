@@ -19,13 +19,13 @@
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 
 #将nlbwmon从服务目录移动到菜单栏
-sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
-sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
+#sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
+#sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
 
 #由于内核参数 net.core.rmem_max 的限制，缓冲区大小被限制为 212992 字节，永久设置 Netlink 接收缓冲区大小为 524288 字节。
-mkdir -p files/etc
-echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
-echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
+#mkdir -p files/etc
+#echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
+#echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 
 #修改sysguarde备份列表
 cat <<EOF > files/etc/sysupgrade.conf
@@ -40,7 +40,6 @@ cat <<EOF > files/etc/sysupgrade.conf
 /usr/share/wechatpush/api/OpenWrt.jpg
 /root/backup_openwrt.sh
 /root/sshpass
-/var/lib/nlbwmon
 EOF
 
 chmod 0644 files/etc/sysupgrade.conf
