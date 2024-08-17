@@ -14,8 +14,8 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 #添加软件包
-#rm -rf feeds/luci/applications/luci-app-openclash
-#git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 
 #将nlbwmon从服务目录移动到菜单栏
