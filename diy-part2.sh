@@ -14,8 +14,8 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 #添加软件包
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone -b main --single-branch --filter=blob:none https://github.com/morytyann/OpenWrt-mihomo
 mv OpenWrt-mihomo/luci-app-mihomo package/
@@ -48,16 +48,16 @@ EOF
 chmod 0644 files/etc/sysupgrade.conf
 
 #将clash内核、TUN内核、Meta内核编译进目录
-mkdir -p files/etc/openclash/core
-curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
-mv /tmp/clash files/etc/openclash/core/clash
-chmod 0755 files/etc/openclash/core/clash
-curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | gunzip -c > /tmp/clash_tun
-mv /tmp/clash_tun files/etc/openclash/core/clash_tun
-chmod 0755 files/etc/openclash/core/clash_tun
-curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
-mv /tmp/clash files/etc/openclash/core/clash_meta
-chmod 0755 files/etc/openclash/core/clash_meta
+#mkdir -p files/etc/openclash/core
+#curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
+#mv /tmp/clash files/etc/openclash/core/clash
+#chmod 0755 files/etc/openclash/core/clash
+#curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz | gunzip -c > /tmp/clash_tun
+#mv /tmp/clash_tun files/etc/openclash/core/clash_tun
+#chmod 0755 files/etc/openclash/core/clash_tun
+#curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
+#mv /tmp/clash files/etc/openclash/core/clash_meta
+#chmod 0755 files/etc/openclash/core/clash_meta
 
 #将AdGuardHome核心文件编译进目录
 curl -s https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest \
