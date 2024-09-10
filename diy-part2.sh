@@ -31,6 +31,8 @@ mv OpenWrt-mihomo/mihomo package/
 #echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
 
 #修改sysguarde备份列表
+mkdir -p files/etc
+
 cat <<EOF > files/etc/sysupgrade.conf
 ## This file contains files and directories that should
 ## be preserved during an upgrade.
