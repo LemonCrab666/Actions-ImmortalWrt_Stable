@@ -40,6 +40,7 @@ cat <<EOF > files/etc/sysupgrade.conf
 # /etc/example.conf
 # /etc/openvpn/
 /etc/AdGuardHome.yaml
+/etc/collectd/
 /usr/bin/AdGuardHome/
 /www/luci-static/argon/background/
 /usr/share/wechatpush/api/OpenWrt.jpg
