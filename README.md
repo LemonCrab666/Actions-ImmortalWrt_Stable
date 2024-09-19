@@ -8,9 +8,9 @@
 已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、upnp、openvpn服务器、kms服务器、adguardhome、smartdns
 并支持直接从官方源下载插件
 
--luci-app-ttyd
--luci-app-openclash
--luci-app-
+- luci-app-ttyd
+- luci-app-openclash
+- luci-app-
 
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/5e4b9e05-9b60-4ddd-81ae-09fdda88f16d)
