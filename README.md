@@ -1,4 +1,4 @@
-![1726715086819](https://github.com/user-attachments/assets/f9f361ad-6512-4900-8c8f-22ae4436b194)# Actions-ImmortalWrt_Stable
+# Actions-ImmortalWrt_Stable
 
 使用[P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)的模板对ImmortalWrt_Stable源码进行编译
 
