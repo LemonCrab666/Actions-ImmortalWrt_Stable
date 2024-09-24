@@ -21,6 +21,14 @@ git clone -b main --single-branch --filter=blob:none https://github.com/morytyan
 mv OpenWrt-mihomo/luci-app-mihomo package/
 mv OpenWrt-mihomo/mihomo package/
 
+#添加qosmate
+wget -O files/etc/init.d/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/init.d/qosmate
+chmod +x files/etc/init.d/qosmate
+wget -O files/etc/qosmate.sh https://raw.githubusercontent.com/hudra0/qosmate/main/etc/qosmate.sh
+chmod +x files/etc/qosmate.sh
+wget -O /etc/config/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/config/qosmate
+chmod +x files/etc/config/qosmate
+
 #将nlbwmon从服务目录移动到菜单栏
 #sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 #sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
