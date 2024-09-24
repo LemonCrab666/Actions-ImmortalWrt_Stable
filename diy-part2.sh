@@ -23,11 +23,14 @@ mv OpenWrt-mihomo/mihomo package/
 
 #添加qosmate
 git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmate
+mkdir -p files/etc/init.d
 wget -O files/etc/init.d/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/init.d/qosmate
 chmod +x files/etc/init.d/qosmate
+mkdir -p files/etc
 wget -O files/etc/qosmate.sh https://raw.githubusercontent.com/hudra0/qosmate/main/etc/qosmate.sh
 chmod +x files/etc/qosmate.sh
-wget -O /etc/config/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/config/qosmate
+mkdir -p files/etc/config
+wget -O files/etc/config/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/config/qosmate
 chmod +x files/etc/config/qosmate
 
 #将nlbwmon从服务目录移动到菜单栏
