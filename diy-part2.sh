@@ -14,50 +14,76 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 #添加软件包
+#OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
+#AdguardHome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+#Mihomo
 git clone -b main --single-branch --filter=blob:none https://github.com/morytyann/OpenWrt-mihomo
 mv OpenWrt-mihomo/luci-app-mihomo package/
 mv OpenWrt-mihomo/mihomo package/
-
 #添加qosmate
 git clone https://github.com/hudra0/qosmate.git package/qosmate
 git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmate
 
-#git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmate
-#mkdir -p files/etc/init.d
-#wget -O files/etc/init.d/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/init.d/qosmate
-#chmod +x files/etc/init.d/qosmate
-#mkdir -p files/etc
-#wget -O files/etc/qosmate.sh https://raw.githubusercontent.com/hudra0/qosmate/main/etc/qosmate.sh
-#chmod +x files/etc/qosmate.sh
-#mkdir -p files/etc/config
-#wget -O files/etc/config/qosmate https://raw.githubusercontent.com/hudra0/qosmate/main/etc/config/qosmate
-#chmod +x files/etc/config/qosmate
+#首次启动运行脚本
+mkdir -p files/etc/uci-defaults
 
-#添加luci-app-qosmate
-#mkdir -p files/www/luci-static/resources/view/qosmate files/usr/share/luci/menu.d files/usr/share/rpcd/acl.d files/usr/libexec/rpcd && \
-#wget -O files/www/luci-static/resources/view/qosmate/settings.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/settings.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/hfsc.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/hfsc.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/cake.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/cake.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/advanced.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/advanced.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/rules.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/rules.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/connections.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/connections.js && \
-#wget -O files/www/luci-static/resources/view/qosmate/custom_rules.js https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/htdocs/luci-static/resources/view/custom_rules.js && \
-#wget -O files/usr/share/luci/menu.d/luci-app-qosmate.json https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/root/usr/share/luci/menu.d/luci-app-qosmate.json && \
-#wget -O files/usr/share/rpcd/acl.d/luci-app-qosmate.json https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/root/usr/share/rpcd/acl.d/luci-app-qosmate.json && \
-#wget -O files/usr/libexec/rpcd/luci.qosmate https://raw.githubusercontent.com/hudra0/luci-app-qosmate/main/root/usr/libexec/rpcd/luci.qosmate && \
-#chmod +x /usr/libexec/rpcd/luci.qosmate
+cat <<EOF > files/etc/uci-defaults/expand-root.sh
+#!/bin/sh
+# Configure startup scripts
+cat << "EOF1" > /etc/uci-defaults/70-rootpt-resize
+if [ ! -e /etc/rootpt-resize ] \
+&& type parted > /dev/null \
+&& lock -n /var/lock/root-resize
+then
+ROOT_BLK="\$(readlink -f /sys/dev/block/\"\$(awk -e \
+'\$9==\"/dev/root\"{print \$3}' /proc/self/mountinfo)\")"
+ROOT_DISK="/dev/\$(basename "\${ROOT_BLK%/*}")"
+ROOT_PART="\${ROOT_BLK##*[^0-9]}"
+parted -f -s "\${ROOT_DISK}" \
+resizepart "\${ROOT_PART}" 100%
+mount_root done
+touch /etc/rootpt-resize
+reboot
+fi
+exit 1
+EOF1
 
-#将nlbwmon从服务目录移动到菜单栏
-#sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
-#sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
+cat << "EOF2" > /etc/uci-defaults/80-rootfs-resize
+if [ ! -e /etc/rootfs-resize ] \
+&& [ -e /etc/rootpt-resize ] \
+&& type losetup > /dev/null \
+&& type resize2fs > /dev/null \
+&& lock -n /var/lock/root-resize
+then
+ROOT_BLK="\$(readlink -f /sys/dev/block/\"\$(awk -e \
+'\$9==\"/dev/root\"{print \$3}' /proc/self/mountinfo)\")"
+ROOT_DEV="/dev/\${ROOT_BLK##*/}"
+LOOP_DEV="\$(awk -e '\$5==\"/overlay\"{print \$9}' \
+/proc/self/mountinfo)"
+if [ -z "\${LOOP_DEV}" ]
+then
+LOOP_DEV="\$(losetup -f)"
+losetup "\${LOOP_DEV}" "\${ROOT_DEV}"
+fi
+resize2fs -f "\${LOOP_DEV}"
+mount_root done
+touch /etc/rootfs-resize
+reboot
+fi
+exit 1
+EOF2
 
-#由于内核参数 net.core.rmem_max 的限制，缓冲区大小被限制为 212992 字节，永久设置 Netlink 接收缓冲区大小为 524288 字节。
-#mkdir -p files/etc
-#echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
-#echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
+cat << "EOF3" >> /etc/sysupgrade.conf
+/etc/uci-defaults/70-rootpt-resize
+/etc/uci-defaults/80-rootfs-resize
+EOF3
+
+sh /etc/uci-defaults/70-rootpt-resize
+
+EOF
 
 #修改sysguarde备份列表
 mkdir -p files/etc
@@ -75,6 +101,8 @@ cat <<EOF > files/etc/sysupgrade.conf
 /usr/share/wechatpush/api/OpenWrt.jpg
 /root/backup_openwrt.sh
 /root/sshpass
+/etc/uci-defaults/70-rootpt-resize
+/etc/uci-defaults/80-rootfs-resize
 EOF
 
 chmod 0644 files/etc/sysupgrade.conf
@@ -138,3 +166,12 @@ fi
 
 # 输出成功信息
 echo "替换成功！"
+
+#将nlbwmon从服务目录移动到菜单栏
+#sed -i -e '/"path": "admin\/services\/nlbw\/display"/d' -e 's/services\///g' -e 's/"type": "alias"/"type": "firstchild"/' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
+#sed -i 's|admin/services/nlbw/backup|admin/nlbw/backup|g' package/feeds/luci/luci-app-nlbwmon/htdocs/luci-static/resources/view/nlbw/config.js
+
+#由于内核参数 net.core.rmem_max 的限制，缓冲区大小被限制为 212992 字节，永久设置 Netlink 接收缓冲区大小为 524288 字节。
+#mkdir -p files/etc
+#echo "# Defaults are configured in /etc/sysctl.d/* and can be customized in this file" > files/etc/sysctl.conf
+#echo "net.core.rmem_max=524288" >> files/etc/sysctl.conf
