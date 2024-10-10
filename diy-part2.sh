@@ -30,10 +30,7 @@ git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmat
 #首次启动运行脚本
 mkdir -p files/etc/uci-defaults
 
-cat <<EOF > files/etc/uci-defaults/expand-root.sh
-#!/bin/sh
-# Configure startup scripts
-cat << "EOF1" > /etc/uci-defaults/70-rootpt-resize
+cat << "EOF" > /etc/uci-defaults/70-rootpt-resize
 if [ ! -e /etc/rootpt-resize ] \
 && type parted > /dev/null \
 && lock -n /var/lock/root-resize
@@ -49,9 +46,9 @@ touch /etc/rootpt-resize
 reboot
 fi
 exit 1
-EOF1
+EOF
 
-cat << "EOF2" > /etc/uci-defaults/80-rootfs-resize
+cat << "EOF" > /etc/uci-defaults/80-rootfs-resize
 if [ ! -e /etc/rootfs-resize ] \
 && [ -e /etc/rootpt-resize ] \
 && type losetup > /dev/null \
@@ -74,10 +71,6 @@ touch /etc/rootfs-resize
 reboot
 fi
 exit 1
-EOF2
-
-sh /etc/uci-defaults/70-rootpt-resize
-
 EOF
 
 #修改sysguarde备份列表
