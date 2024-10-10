@@ -48,6 +48,8 @@ fi
 exit 1
 EOF
 
+chmod 0644 /etc/uci-defaults/70-rootpt-resize
+
 cat << "EOF" > /etc/uci-defaults/80-rootfs-resize
 if [ ! -e /etc/rootfs-resize ] \
 && [ -e /etc/rootpt-resize ] \
@@ -72,6 +74,8 @@ reboot
 fi
 exit 1
 EOF
+
+chmod 0644 /etc/uci-defaults/80-rootfs-resize
 
 #修改sysguarde备份列表
 mkdir -p files/etc
