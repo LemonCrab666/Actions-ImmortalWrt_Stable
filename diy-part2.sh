@@ -48,7 +48,7 @@ fi
 exit 1
 EOF
 
-chmod 0644 /etc/uci-defaults/70-rootpt-resize
+chmod 0755 /etc/uci-defaults/70-rootpt-resize
 
 cat << "EOF" > /etc/uci-defaults/80-rootfs-resize
 if [ ! -e /etc/rootfs-resize ] \
