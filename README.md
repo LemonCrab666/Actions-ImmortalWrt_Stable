@@ -33,6 +33,9 @@
 - snmpd
 - snmp-mibs
 - snmp-utils
+- parted
+- losetup
+- resize2fs
 
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt/assets/55867630/5e4b9e05-9b60-4ddd-81ae-09fdda88f16d)
