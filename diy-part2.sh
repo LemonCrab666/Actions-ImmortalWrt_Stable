@@ -27,6 +27,23 @@ mv OpenWrt-mihomo/mihomo package/
 git clone https://github.com/hudra0/qosmate.git package/qosmate
 git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmate
 
+#修改nginx默认http
+mkdir -p files/etc/config
+
+cat <<EOF > files/etc/config/nginx
+config main global
+    option uci_enable 'true'
+ 
+config server '_lan'
+    list listen '80 default_server'
+    list listen '[::]:80 default_server'
+    option server_name '_lan'
+    #list include 'restrict_locally'
+    list include 'conf.d/*.locations'
+EOF
+
+chmod 0600 files/etc/config/nginx
+
 #修改sysguarde备份列表
 mkdir -p files/etc
 
