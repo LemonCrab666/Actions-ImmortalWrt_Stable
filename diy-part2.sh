@@ -60,6 +60,7 @@ cat <<EOF > files/etc/sysupgrade.conf
 /usr/share/wechatpush/api/OpenWrt.jpg
 /root/backup_openwrt.sh
 /root/sshpass
+/etc/nginx/uci.conf
 EOF
 
 chmod 0644 files/etc/sysupgrade.conf
