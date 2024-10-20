@@ -11,6 +11,7 @@
 - luci-app-adguardhome
 - luci-app-argon-config
 - luci-app-autoreboot
+- luci-app-banip
 - luci-app-ddns
 - luci-app-diskman
 - luci-app-openclash
