@@ -25,7 +25,7 @@ mv OpenWrt-mihomo/luci-app-mihomo package/
 mv OpenWrt-mihomo/mihomo package/
 #添加qosmate
 git clone https://github.com/hudra0/qosmate.git package/qosmate
-git clone https://github.com/hudra0/luci-app-qosmate.git package/luci-app-qosmate
+git clone https://github.com/LemonCrab666/luci-app-qosmate.git package/luci-app-qosmate
 
 #修改nginx默认http
 mkdir -p files/etc/config
