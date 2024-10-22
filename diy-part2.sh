@@ -33,7 +33,7 @@ mkdir -p files/etc/config
 
 cat <<EOF > files/etc/config/nginx
 config main global
-    option uci_enable 'true'
+    option uci_enable 'false'
  
 config server '_lan'
     list listen '80 default_server'
@@ -56,12 +56,9 @@ cat <<EOF > files/etc/sysupgrade.conf
 # /etc/openvpn/
 /etc/AdGuardHome.yaml
 /etc/collectd/
-/etc/nginx/uci.conf
 /usr/bin/AdGuardHome/
 /www/luci-static/argon/background/
 /usr/share/wechatpush/api/OpenWrt.jpg
-/root/backup_openwrt.sh
-/root/sshpass
 EOF
 
 chmod 0644 files/etc/sysupgrade.conf
