@@ -33,7 +33,7 @@ mkdir -p files/etc/config
 
 cat <<EOF > files/etc/config/nginx
 config main global
-    option uci_enable 'false'
+    option uci_enable 'true'
  
 config server '_lan'
     list listen '80 default_server'
