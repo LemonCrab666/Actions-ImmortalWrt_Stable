@@ -15,17 +15,11 @@
 - luci-app-autoreboot
 - luci-app-banip
 - luci-app-ddns
-- luci-app-diskman
 - luci-app-openclash
 - luci-app-openvpn-server
 - luci-app-qosmate
 - luci-app-smartdns
 - luci-app-statistics
-  - collectd-mod-conntrack
-  - collectd-mod-dhcpleases
-  - collectd-mod-mqtt
-  - collectd-mod-thermal
-  - collectd-mod-uptime
 - luci-app-ttyd
 - luci-app-upnp
 - luci-app-vlmcsd
@@ -43,6 +37,12 @@
   - snmp-utils
   - snmpd
 - Utilities
+  - collectd
+    - collectd-mod-conntrack
+    - collectd-mod-dhcpleases
+    - collectd-mod-mqtt
+    - collectd-mod-thermal
+    - collectd-mod-uptime
   - qrencode
   - sshpass
 
