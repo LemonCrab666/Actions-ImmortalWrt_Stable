@@ -17,7 +17,7 @@
 - luci-app-ddns
 - luci-app-openclash
 - luci-app-openvpn-server
-- luci-app-qosmate
+- ~~luci-app-qosmate~~
 - luci-app-smartdns
 - luci-app-statistics
 - luci-app-ttyd
