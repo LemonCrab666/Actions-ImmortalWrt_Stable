@@ -27,8 +27,8 @@
 - luci-app-wol
 - luci-proto-wireguard
 - Network
-  - File Transfer
-    - rsync
+  - ~~File Transfer~~
+    - ~~rsync~~
   - IP Adresses andNames
     - ddns-scripts_aliyun
   - SSH
@@ -44,7 +44,7 @@
     - collectd-mod-thermal
     - collectd-mod-uptime
   - qrencode
-  - sshpass
+  - ~~sshpass~~
 
 
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
