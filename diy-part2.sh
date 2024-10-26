@@ -53,9 +53,7 @@ cat <<EOF > files/etc/sysupgrade.conf
 
 # /etc/example.conf
 # /etc/openvpn/
-/etc/AdGuardHome.yaml
 /etc/collectd/
-/usr/bin/AdGuardHome/
 /www/luci-static/argon/background/
 /usr/share/wechatpush/api/OpenWrt.jpg
 EOF
@@ -63,7 +61,7 @@ EOF
 chmod 0644 files/etc/sysupgrade.conf
 
 #将clash内核、TUN内核、Meta内核编译进目录
-mkdir -p files/etc/openclash/core
+#mkdir -p files/etc/openclash/core
 #Dev内核
 #curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz | tar -xz -C /tmp
 #mv /tmp/clash files/etc/openclash/core/clash
