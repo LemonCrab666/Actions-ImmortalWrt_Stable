@@ -24,9 +24,8 @@ git clone -b main --single-branch --filter=blob:none https://github.com/morytyan
 mv OpenWrt-mihomo/luci-app-mihomo package/
 mv OpenWrt-mihomo/mihomo package/
 #添加qosmate
-git clone https://github.com/hudra0/qosmate.git package/qosmate
-chmod 0644 package/qosmate/etc/config/qosmate
-git clone https://github.com/LemonCrab666/luci-app-qosmate.git package/luci-app-qosmate
+#git clone https://github.com/hudra0/qosmate.git package/qosmate
+#git clone https://github.com/LemonCrab666/luci-app-qosmate.git package/luci-app-qosmate
 
 #修改nginx默认http
 mkdir -p files/etc/config
@@ -74,20 +73,20 @@ mkdir -p files/etc/openclash/core
 #mv /tmp/clash_tun files/etc/openclash/core/clash_tun
 #chmod 0755 files/etc/openclash/core/clash_tun
 #meta内核
-curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
-mv /tmp/clash files/etc/openclash/core/clash_meta
-chmod 0755 files/etc/openclash/core/clash_meta
+#curl -L https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz | tar -xz -C /tmp
+#mv /tmp/clash files/etc/openclash/core/clash_meta
+#chmod 0755 files/etc/openclash/core/clash_meta
 
 #将AdGuardHome核心文件编译进目录
-curl -s https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest \
-| grep "browser_download_url.*AdGuardHome_linux_amd64.tar.gz" \
-| cut -d : -f 2,3 \
-| tr -d \" \
-| xargs curl -L -o /tmp/AdGuardHome_linux_amd64.tar.gz && \
-tar -xzvf /tmp/AdGuardHome_linux_amd64.tar.gz -C /tmp/ --strip-components=1 && \
-mkdir -p files/usr/bin/AdGuardHome && \
-mv /tmp/AdGuardHome/AdGuardHome files/usr/bin/AdGuardHome/
-chmod 0755 files/usr/bin/AdGuardHome/AdGuardHome
+#curl -s https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest \
+#| grep "browser_download_url.*AdGuardHome_linux_amd64.tar.gz" \
+#| cut -d : -f 2,3 \
+#| tr -d \" \
+#| xargs curl -L -o /tmp/AdGuardHome_linux_amd64.tar.gz && \
+#tar -xzvf /tmp/AdGuardHome_linux_amd64.tar.gz -C /tmp/ --strip-components=1 && \
+#mkdir -p files/usr/bin/AdGuardHome && \
+#mv /tmp/AdGuardHome/AdGuardHome files/usr/bin/AdGuardHome/
+#chmod 0755 files/usr/bin/AdGuardHome/AdGuardHome
 
 # 修改固件MD5值
 # 生成VerMagic文件
