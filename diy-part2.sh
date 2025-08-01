@@ -20,9 +20,9 @@ git clone -b master --single-branch --filter=blob:none https://github.com/vernes
 #AdguardHome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 #Mihomo
-git clone -b main --single-branch --filter=blob:none https://github.com/morytyann/OpenWrt-mihomo
-mv OpenWrt-mihomo/luci-app-mihomo package/
-mv OpenWrt-mihomo/mihomo package/
+git clone -b main --single-branch --filter=blob:none https://github.com/nikkinikki-org/OpenWrt-nikki
+mv OpenWrt-nikki/luci-app-nikki package/
+mv OpenWrt-nikki/nikki package/
 #添加qosmate
 #git clone https://github.com/hudra0/qosmate.git package/qosmate
 #git clone https://github.com/LemonCrab666/luci-app-qosmate.git package/luci-app-qosmate
