@@ -22,12 +22,21 @@
 - luci-app-wol
 - luci-proto-wireguard
 - Network
+  - acme-acmesh-dnsapi
+  - iperf3
   - IP Adresses andNames
     - ddns-scripts_aliyun
   - SSH
     - openssh-sftp-server
+  - Web Servers/Proxies
+    - nginx-full
 - Utilities
+  - coremark
   - qrencode
+  - syncthing
+- VPN
+  - openvpn-openssl
+  - openvpn-easy-rsa
 
 
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
