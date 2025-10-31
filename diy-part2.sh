@@ -15,14 +15,14 @@
 
 #添加软件包
 #OpenClash
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
+#rm -rf feeds/luci/applications/luci-app-openclash
+#git clone -b master --single-branch --filter=blob:none https://github.com/vernesong/OpenClash.git feeds/luci/applications/luci-app-openclash
 #AdguardHome
-git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 #Mihomo
-git clone -b main --single-branch --filter=blob:none https://github.com/nikkinikki-org/OpenWrt-nikki
-mv OpenWrt-nikki/luci-app-nikki package/
-mv OpenWrt-nikki/nikki package/
+#git clone -b main --single-branch --filter=blob:none https://github.com/nikkinikki-org/OpenWrt-nikki
+#mv OpenWrt-nikki/luci-app-nikki package/
+#mv OpenWrt-nikki/nikki package/
 #添加qosmate
 #git clone https://github.com/hudra0/qosmate.git package/qosmate
 #git clone https://github.com/LemonCrab666/luci-app-qosmate.git package/luci-app-qosmate
@@ -35,8 +35,8 @@ config main global
 	option uci_enable 'true'
 
 config server '_lan'
-	list listen '443 ssl default_server'
-	list listen '[::]:443 ssl default_server'
+	list listen '8888 ssl default_server'
+	list listen '[::]:8888 ssl default_server'
 	option server_name '_lan'
 	list include 'restrict_locally'
 	list include 'conf.d/*.locations'
@@ -48,8 +48,8 @@ config server '_lan'
 	option access_log 'off; # logd openwrt'
 
 config server '_redirect2ssl'
-	list listen '80'
-	list listen '[::]:80'
+	list listen '8887'
+	list listen '[::]:8887'
 	option server_name '_redirect2ssl'
 	option return '302 https://$host$request_uri'
 EOF
@@ -65,9 +65,7 @@ cat <<EOF > files/etc/sysupgrade.conf
 
 # /etc/example.conf
 # /etc/openvpn/
-/etc/collectd/
-/www/luci-static/argon/background/
-/usr/share/wechatpush/api/OpenWrt.jpg
+
 EOF
 
 chmod 0644 files/etc/sysupgrade.conf
@@ -100,7 +98,7 @@ chmod 0644 files/etc/sysupgrade.conf
 
 # 修改固件MD5值
 # 生成VerMagic文件
-echo "10d7a0d386bdad3f3ac1aef05275283f" > vermagic
+echo "f8c5d7fde74fa4fedf4370775255c515" > vermagic
 # 检查VerMagic文件是否生成成功
 if [ ! -f "vermagic" ]; then
     echo "VerMagic文件生成失败！"
