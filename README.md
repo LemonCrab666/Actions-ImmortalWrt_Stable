@@ -8,19 +8,19 @@
 已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、openvpn服务器、kms服务器
 并支持直接从官方源下载插件
 
-- luci-app-acme
-- luci-app-ddns
-- luci-app-filemanager
-- luci-app-nikki
-- luci-app-openvpn
-- openvpn-openssl
-- openvpn-easy-rsa
-- luci-app-ttyd
-- luci-app-watchcat
-- luci-app-vlmcsd
-- luci-app-wechatpush
-- luci-app-wol
-- luci-proto-wireguard
+- Luci
+  - App
+    - luci-app-acme
+    - luci-app-ddns
+    - luci-app-filemanager
+    - luci-app-nikki
+    - luci-app-openvpn
+    - luci-app-ttyd
+    - luci-app-watchcat
+    - luci-app-vlmcsd
+    - luci-app-wechatpush
+    - luci-app-wol
+    - luci-proto-wireguard
 - Network
   - acme-acmesh-dnsapi
   - iperf3
