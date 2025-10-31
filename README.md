@@ -5,46 +5,29 @@
 ## 纯净版X86_64 ImmortalWrt_Stable
 默认ip地址：http://192.168.1.1 或 http://immortalwrt.lan
 用户名：root 密码：无
-已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、upnp、openvpn服务器、kms服务器、adguardhome、smartdns
+已包含插件wireguard、ttyd终端、openclash、微信推送、动态dns、网络唤醒、openvpn服务器、kms服务器
 并支持直接从官方源下载插件
 
-- luci-nginx
-- luci-ssl-nginx
-- luci-app-adguardhome
-- luci-app-argon-config
-- luci-app-autoreboot
-- luci-app-banip
+- luci-app-acme
 - luci-app-ddns
-- luci-app-openclash
-- luci-app-openvpn-server
-- ~~luci-app-qosmate~~
-- luci-app-smartdns
-- luci-app-statistics
+- luci-app-filemanager
+- luci-app-nikki
+- luci-app-openvpn
+- openvpn-openssl
+- openvpn-easy-rsa
 - luci-app-ttyd
-- luci-app-upnp
+- luci-app-watchcat
 - luci-app-vlmcsd
 - luci-app-wechatpush
 - luci-app-wol
 - luci-proto-wireguard
 - Network
-  - ~~File Transfer~~
-    - ~~rsync~~
   - IP Adresses andNames
     - ddns-scripts_aliyun
   - SSH
     - openssh-sftp-server
-  - snmp-mibs
-  - snmp-utils
-  - snmpd
 - Utilities
-  - collectd
-    - collectd-mod-conntrack
-    - collectd-mod-dhcpleases
-    - collectd-mod-mqtt
-    - collectd-mod-thermal
-    - collectd-mod-uptime
   - qrencode
-  - ~~sshpass~~
 
 
 ![image](https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/assets/55867630/921ca964-4c2f-496e-9954-d486c993f704)
