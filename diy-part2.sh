@@ -98,7 +98,7 @@ chmod 0644 files/etc/sysupgrade.conf
 
 # 修改固件MD5值
 # 生成VerMagic文件
-echo "f8c5d7fde74fa4fedf4370775255c515" > vermagic
+echo "e7e50fbc0aafa7443418a79928da2602" > vermagic
 # 检查VerMagic文件是否生成成功
 if [ ! -f "vermagic" ]; then
     echo "VerMagic文件生成失败！"
