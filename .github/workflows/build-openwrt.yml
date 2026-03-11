@@ -207,5 +207,6 @@ jobs:
             https://github.com/LemonCrab666/Actions-ImmortalWrt_Stable/releases/tag/${{ steps.tag.outputs.release_tag }}
             更新日志：
             更新ImmortalWrt_Stable最新源码
+            构建分支: ${{ env.REPO_BRANCH }}
             源码更新内容: ${{ steps.tag.outputs.commits }}
             查看更新日志: ${{ steps.tag.outputs.commit_url }}
